@@ -12,15 +12,19 @@ int test(void *arg)
     return result;
 }
 
-void foobar(const int m)
+void foobar(const float m[], const int length)
 {
-    pthread_t list_pthread[THREAD_COUNT];
-    int results[THREAD_COUNT];
-    for (int i = 0; i < THREAD_COUNT; ++i)
-        pthread_create(&list_pthread[i], NULL, test, (void *)i);
-    for (int i = 0; i < THREAD_COUNT; ++i)
-        pthread_join(list_pthread[i], (void *)(&results[i]));
-    for (int i = 0; i < THREAD_COUNT; ++i)
-        printf("%d is %d\n", i, results[i]);
-    printf("m is %d\n", m);
+    printf("%lu\n", sizeof(m));
+    for (int i = 0; i < length; ++i)
+        printf("%f ", m[i]);
+    printf("\n");
+    // pthread_t list_pthread[THREAD_COUNT];
+    // int results[THREAD_COUNT];
+    // for (int i = 0; i < THREAD_COUNT; ++i)
+    //     pthread_create(&list_pthread[i], NULL, test, (void *)i);
+    // for (int i = 0; i < THREAD_COUNT; ++i)
+    //     pthread_join(list_pthread[i], (void *)(&results[i]));
+    // for (int i = 0; i < THREAD_COUNT; ++i)
+    //     printf("%d is %d\n", i, results[i]);
+    // printf("m is %d\n", m);
 }
